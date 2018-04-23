@@ -67,7 +67,7 @@ function dianTotal() {
 
 function fun() {
   for (let i = 0; i < zongJia1.length; i++) {
-    zongJia1[i].innerText = (Number(zongJia1[i].parentNode.parentNode.previousSibling.previousSibling.previousSibling.previousSibling.previousSibling.previousSibling.lastChild.innerText) * Number(zongJia1[i].parentNode.parentNode.previousSibling.previousSibling.previousSibling.previousSibling.lastChild.previousSibling.previousSibling.previousSibling.value)).toFixed(2)
+    zongJia1[i].innerText = (Number(zongJia1[i].parentNode.parentNode.previousSibling.previousSibling.previousSibling.previousSibling.previousSibling.previousSibling.lastChild.previousSibling.innerText) * Number(zongJia1[i].parentNode.parentNode.previousSibling.previousSibling.previousSibling.previousSibling.lastChild.previousSibling.previousSibling.previousSibling.value)).toFixed(2)
   }
 }
 
