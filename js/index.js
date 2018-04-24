@@ -9,48 +9,78 @@ document.querySelector(".top-6-1").onclick = function(event){
     }
 }
 // banner
-function add(ele,btr){
-			var obj = ele.className
-			let bt = obj.split(/\s+/)
-			let newclass = bt.indexOf(btr)
-			var newclassname
-			if (newclass === -1) {
-				newclassname = obj + ' ' + btr
-			}
-			ele.className = newclassname
-		}
-		
-		function remove(ele,str){
-			var old = ele.className
-			let rem = old.split(/\s+/)
-			let newadd = rem.indexOf(str)
-			if (newadd !== -1) {
-				rem.splice(newadd,1)
-				ele.className = rem.join(" ")
-			}
-		}
-		var arr = document.querySelectorAll(".banner a")
-		var imgarr = document.querySelectorAll(".box img")
-		for (let i = 0; i < arr.length; i++) {
-			arr[i].onclick = function(event){
-				event.preventDefault()
-				for (let j = 0; j < arr.length; j++) {
-					imgarr[j].style.opacity = 0
-					remove(arr[j],"banner-1")
-				}
-				add(this,"banner-1")
-				imgarr[i].style.opacity = 1
-			}
-		}
-// 轮播
- document.querySelector('.box').onmouseenter = function(){
-	document.querySelector('.arrow').style.display = 'block'
-	document.querySelector('.arrow1').style.display = 'block'
+document.querySelector('.banner').onmouseenter = function () {
+	aAll = document.querySelectorAll('.anniu>a')
+	for (let i = 0; i < aAll.length; i++) {
+		aAll[i].style.display = 'block'
+	}
+	clearInterval(t)
 }
-document.querySelector('.box').onmouseleave = function(){
-	document.querySelector('.arrow').style.display = 'none'
-	document.querySelector('.arrow1').style.display = 'none'
+document.querySelector('.banner').onmouseleave = function () {
+	aAll = document.querySelectorAll('.anniu>a')
+	for (let i = 0; i < aAll.length; i++) {
+		aAll[i].style.display = 'none'
+	}
+	t = setInterval(lunbo, 1000)
 }
+let a = 0
+let imgArr = document.querySelectorAll('.banner>img')
+document.querySelectorAll('.anniu>a')[1].onclick = function () {
+	a++
+	if (a > imgArr.length - 1) {
+		a = 0
+	}
+	for (let i = 0; i < imgArr.length; i++) {
+		imgArr[i].style.opacity = '0'
+		aArr[i].style.backgroundColor = '#999'
+	}
+	imgArr[a].style.opacity = '1'
+	aArr[a].style.backgroundColor = '#1cbdc5'
+}
+document.querySelectorAll('.anniu>a')[0].onclick = function () {
+	a--
+	if (a < 0) {
+		a = 5
+	}
+	for (let i = 0; i < imgArr.length; i++) {
+		imgArr[i].style.opacity = '0'
+		aArr[i].style.backgroundColor = '#999'
+	}
+	imgArr[a].style.opacity = '1'
+	aArr[a].style.backgroundColor = '#1cbdc5'
+}
+aArr = document.querySelectorAll('.dj>a')
+for (let i = 0; i < aArr.length; i++)
+	aArr[i].onclick = function () {
+		a = i
+		for (let j = 0; j < aArr.length; j++) {
+			imgArr[j].style.opacity = '0'
+			aArr[j].style.backgroundColor = '#999'
+		}
+		imgArr[i].style.opacity = '1'
+		aArr[i].style.backgroundColor = '#1cbdc5'
+	}
+var lunbo = function () {
+	a++
+	if (a > imgArr.length - 1) {
+		a = 0
+	}
+	for (let i = 0; i < imgArr.length; i++) {
+		imgArr[i].style.opacity = '0'
+		aArr[i].style.backgroundColor = '#999'
+	}
+	imgArr[a].style.opacity = '1'
+	aArr[a].style.backgroundColor = '#1cbdc5'
+}
+let t = setInterval(lunbo, 1000)
+window.onscroll = function () {
+	let sortop = document.querySelector("html").scrollTop
+	if (sortop >= 2000) {
+		document.querySelector(".right").style.display = "block"
+	} 
+}
+
+
 // section2
 document.querySelector('.section-99').onmouseenter = function(){
 	document.querySelector('.section-98').style.boxShadow = '10px 10px 4px #ffa128'
