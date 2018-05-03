@@ -29,9 +29,16 @@ for (let i = 0; i < inputZ.length; i++) {
 }
 
 function dianTotal() {
+  let dianP1 = document.querySelectorAll('.dp1')
+  let dianP2 = document.querySelectorAll('.dp2')
+  let bbzj = document.querySelectorAll('.bbzj')
+  let goods1 = document.querySelectorAll('.goods1')
+  let goods2 = document.querySelectorAll('.goods2')
+  let zongJia1 = document.querySelectorAll('.zongjia1')
   let dpzj = 0
   let dpzj1 = 0
-  for (let j = 0; j < dianP1.length; j++) {
+  for (let j = 0; j <
+    dianP1.length; j++) {
     if (document.querySelector('.dianPu1').checked) {
       if (goods1[j].checked) {
         dpzj = dpzj + Number(dianP1[j].innerText)
@@ -47,19 +54,19 @@ function dianTotal() {
     }
     document.querySelector('.DP2').innerText = dpzj1.toFixed(2)
   }
-  for (let j = 0; j < bbzj.length; j++) {
+  for (let j =
+    0; j < bbzj.length; j++) {
     bbzj[j].innerText = (dpzj + dpzj1).toFixed(2)
   }
   for (let i = 0; i < inputAll.length; i++) {
-    if (inputAll[i].checked === false) {
+    if (inputAll[i].checked ===
+      false) {
       for (let j = 0; j < all.length; j++) {
         all[j].checked = false
       }
       break
     } else {
-      for (let j = 0; j < all.length; j++) {
-        all[j].checked = true
-      }
+      for (let j = 0; j < all.length; j++) { all[j].checked = true }
     }
   }
 }
@@ -67,7 +74,7 @@ function dianTotal() {
 
 function fun() {
   for (let i = 0; i < zongJia1.length; i++) {
-    zongJia1[i].innerText = (Number(zongJia1[i].parentNode.parentNode.previousSibling.previousSibling.previousSibling.previousSibling.previousSibling.previousSibling.lastChild.innerText) * Number(zongJia1[i].parentNode.parentNode.previousSibling.previousSibling.previousSibling.previousSibling.lastChild.previousSibling.previousSibling.previousSibling.value)).toFixed(2)
+    zongJia1[i].innerText = (Number(zongJia1[i].parentNode.parentNode.previousElementSibling.previousElementSibling.previousElementSibling.lastElementChild.innerText) * Number(zongJia1[i].parentNode.parentNode.previousElementSibling.previousElementSibling.lastElementChild.previousElementSibling.value)).toFixed(2)
   }
 }
 
@@ -144,7 +151,24 @@ for (let i = 0; i < Del.length; i++) {
     event.target
     if (event.target.className === 'Del') {
       event.target.parentNode.parentNode.parentNode.parentNode.removeChild(event.target.parentNode.parentNode.parentNode)
+      let one = document.querySelectorAll(".spxx1").length
+      let two = document.querySelectorAll(".spxx2").length
+      let main = document.querySelector('.main')
+      let kong = document.querySelector('.kong')
+      if (one === 0 && two === 0) {
+        main.style.display = "none"
+        kong.style.display = "block"
+      } else {
+        if (one === 0) {
+          main.removeChild(main.firstElementChild.nextElementSibling.nextElementSibling.nextElementSibling)
+        }
+        if (two === 0) {
+          main.removeChild(main.firstElementChild.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling)
+        }
+      }
     }
+    dianTotal()
+    fun()
   }
 }
 for (let i = 0; i < jia.length; i++) {
@@ -162,12 +186,12 @@ for (let i = 0; i < jian.length; i++) {
     if (val > 1) {
       val--
     }
-
     this.nextElementSibling.value = val
     fun()
     dianTotal()
   }
 }
+
 
 
 // 
